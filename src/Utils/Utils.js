@@ -5,7 +5,7 @@ class Utils {
      * @param {number} mana - The amount of mana.
      * @returns {number} The amount of XP to add.
      */
-    static addXP(mana) {
+    static calculateXP(mana) {
         let xp = 0;
         for (let i = 0; i < mana; i++) {
             xp += Math.floor(Math.random() * 2) + 1;

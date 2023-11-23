@@ -66,7 +66,7 @@ module.exports = {
 
         console.log(selectedItemsStr);
 
-        let xp = Utils.addXP(mana);
+        let xp = Utils.calculateXP(mana);
 
         let embed = new EmbedBuilder()
             .setTitle('Selected Items')
