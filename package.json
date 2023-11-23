@@ -1,0 +1,10 @@
+{
+	"dependencies": {
+		"discord.js": "^14.13.0",
+		"loot-table": "^0.1.0",
+		"mysql": "^2.18.1"
+	},
+	"scripts": {
+		"start": "node src/index.js"
+	}
+}

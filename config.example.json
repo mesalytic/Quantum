@@ -1,0 +1,11 @@
+{
+    "token": "",
+    "clientId": "",
+    "guildId": "",
+    "database": {
+        "host": "",
+        "user": "",
+        "password": "",
+        "database": ""
+    }
+}
