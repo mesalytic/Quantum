@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { EmbedBuilder } = require('discord.js');
+const Utils = require('../../Utils/Utils');
 
 const biomes = {
     mystic_grove: "Mystic Grove"
@@ -21,60 +22,6 @@ let choices = [
     { name: "Mining", value: "mining" },
     { name: "Chopping", value: "chopping" }
 ]
-
-// make me a function that takes an amount of mana, and for each mana returns 1 or 2 xp
-function addXP(mana) {
-    let xp = 0;
-    for (let i = 0; i < mana; i++) {
-        xp += Math.floor(Math.random() * 2) + 1;
-    }
-    return xp;
-}
-
-function getRandomItems(lootTable, mana, miningPower) {
-    // Object to store selected items and their counts
-    let selectedItems = {};
-
-    // Calculate total weight
-    const totalWeight = lootTable.reduce((sum, item) => sum + item.weight, 0);
-
-    for (let i = 0; i < mana; i++) {
-        // Determine the number of items to return for this mana
-        const itemsPerMana = Math.floor(Math.random() * miningPower) + 1;
-
-        for (let k = 0; k < itemsPerMana; k++) {
-            // Generate a random number
-            const randomNum = Math.random() * totalWeight;
-
-            let weightSum = 0;
-
-            // Find item based on its weight
-            for (let j = 0; j < lootTable.length; j++) {
-                weightSum += lootTable[j].weight;
-                if (randomNum <= weightSum) {
-                    const selectedItem = lootTable[j];
-
-                    // If the item is already in the selectedItems object, increment the count
-                    if (selectedItems[selectedItem.id]) {
-                        selectedItems[selectedItem.id].amount += itemsPerMana;
-                    } else {
-                        // Otherwise, add the item to the selectedItems object with a count of 1
-                        selectedItems[selectedItem.id] = {
-                            name: selectedItem.name,
-                            id: selectedItem.id,
-                            emoji: selectedItem.emoji,
-                            amount: itemsPerMana
-                        };
-                    }
-                    break;
-                }
-            }
-        }
-    }
-
-    // Return the counts for each item after all runs
-    return selectedItems;
-}
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -113,13 +60,13 @@ module.exports = {
             return;
         }
 
-        let selectedItems = getRandomItems(lootTables[biome][action], mana, miningPower);
+        let selectedItems = Utils.getRandomItems(lootTables[biome][action], mana, miningPower);
 
         let selectedItemsStr = Object.values(selectedItems).map(item => `${item.emoji} ${item.name}: ${item.amount}`).join('\n');
 
         console.log(selectedItemsStr);
 
-        let xp = addXP(mana);
+        let xp = Utils.addXP(mana);
 
         let embed = new EmbedBuilder()
             .setTitle('Selected Items')
