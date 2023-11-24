@@ -66,6 +66,19 @@ class DatabaseUtils {
         return this.getUserMana(userId)
             .then(userMana => userMana >= mana);
     }
+
+    /**
+     * Retrieves the inventory of a user from the database.
+     * 
+     * @param {string} userId - The ID of the user.
+     * @returns {Promise<Object|null>} A promise that resolves with the user's inventory, or null if the user was not found.
+     * @throws {Error} If an error occurs while executing the query.
+     */
+    getUserInventory(userId) {
+        return this.database.query('SELECT * FROM inventory WHERE userID = ?', [userId])
+            .then(results => results.length > 0 ? results[0] : null);
+    }
+
 }
 
 module.exports = DatabaseUtils;

@@ -2,21 +2,8 @@ const { SlashCommandBuilder } = require('discord.js');
 const { EmbedBuilder } = require('discord.js');
 const Utils = require('../../Utils/Utils');
 
-const biomes = {
-    mystic_grove: "Mystic Grove"
-}
-
-const lootTables = {
-    mystic_grove: {
-        mining: [
-            { name: "Enchanted Crystals", emoji: "<:enchanted_crystals:1177047642858074113>", id: "enchanted_crystals", rarity: "Common", weight: 100, minAmount: 1 },
-            { name: "Mystic Ores", emoji: "❌", id: "mystic_ores", rarity: "Rare", weight: 40, minAmount: 1 },
-            { name: "Ethereal Gems", emoji: "❌", id: "ethereal_gems", rarity: "Epic", weight: 8, minAmount: 1 },
-            { name: "Whispering Stones", emoji: "❌", id: "whispering_stones", rarity: "Legendary", weight: 3, minAmount: 1 },
-            { name: "Luminous Shards", emoji: "❌", id: "luminous_shards", rarity: "Rare", weight: 35, minAmount: 1 },
-        ]
-    }
-};
+const biomes = require("../../../assets/json/biomes.json")
+const lootTables = require("../../../assets/json/lootTable.json");
 
 let choices = [
     { name: "Mining", value: "mining" },
@@ -42,10 +29,11 @@ module.exports = {
     async execute(interaction) {
         // TODO: Implement an "all" option for mana
         // TODO: When the user has enough mana, but not enough to perform the action, perform the action with the mana they have
-        // TODO: Replace the "miningPower" variable with the user's actual mining power
-
+        
         let mana = parseInt(interaction.options.getString("mana"));
-        let miningPower = 1; // replace with actual mining power value
+        let inv = await interaction.client.dbUtils.getUserInventory(interaction.user.id);
+
+        let miningPower = 1 + Utils.xpToLevel(inv.xp);
 
         let biome = await interaction.client.dbUtils.getUserBiome(interaction.user.id)
 

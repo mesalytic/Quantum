@@ -68,6 +68,26 @@ class Utils {
 
         return selectedItems;
     }
+
+    /**
+     * Calculates the level based on the total XP using a quadratic formula.
+     * 
+     * @param {number} xp - The total XP.
+     * @returns {number} The level.
+     */
+    static xpToLevel(xp) {
+        return Math.floor((-100 + Math.sqrt(10000 + 2 * xp)) / 1);
+    }
+
+    /**
+     * Calculates the total XP needed to reach a certain level using a quadratic formula.
+     * 
+     * @param {number} level - The level.
+     * @returns {number} The total XP needed to reach the level.
+     */
+    static levelToXp(level) {
+        return 0.5 * Math.pow(level, 2) + 100 * level;
+    }
 }
 
 module.exports = Utils;

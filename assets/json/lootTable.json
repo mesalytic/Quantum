@@ -1,0 +1,11 @@
+{
+    "mystic_grove": {
+        "mining": [
+            { "name": "Enchanted Crystals", "emoji": "<:enchanted_crystals:1177047642858074113>", "id": "enchanted_crystals", "rarity": "Common", "weight": 100, "minAmount": 1 },
+            { "name": "Mystic Ores", "emoji": "<:mystic_ores:emoji_id>", "id": "mystic_ores", "rarity": "Rare", "weight": 40, "minAmount": 1 },
+            { "name": "Ethereal Gems", "emoji": "<:ethereal_gems:emoji_id>", "id": "ethereal_gems", "rarity": "Epic", "weight": 8, "minAmount": 1 },
+            { "name": "Whispering Stones", "emoji": "<:whispering_stones:emoji_id>", "id": "whispering_stones", "rarity": "Legendary", "weight": 3, "minAmount": 1 },
+            { "name": "Luminous Shards", "emoji": "<:luminous_shards:emoji_id>", "id": "luminous_shards", "rarity": "Rare", "weight": 35, "minAmount": 1 }
+        ]
+    }
+}
