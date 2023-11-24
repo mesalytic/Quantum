@@ -26,7 +26,8 @@ const db = new Database({
     host: config.database.host,
     user: config.database.user,
     password: config.database.password,
-    database: config.database.database
+    database: config.database.database,
+    supportBigNumbers: true
 });
 
 db.connect();

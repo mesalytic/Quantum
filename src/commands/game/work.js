@@ -16,21 +16,21 @@ module.exports = {
         .setDescription("work cmd")
         .addStringOption(option =>
             option.setName("action")
-                .setDescription("select action")
+                .setDescription("Select working action")
                 .setRequired(true)
                 .setAutocomplete(false)
                 .setChoices(...choices)
         )
         .addStringOption(option =>
             option.setName("mana")
-                .setDescription("select mana")
+                .setDescription("Select the amount of mana for the action (\"all\" for all mana)")
                 .setRequired(true)
         ),
     async execute(interaction) {
         // TODO: Implement an "all" option for mana
-        // TODO: When the user has enough mana, but not enough to perform the action, perform the action with the mana they have
+        // TODO: Add support for different tool types, and adjust the loot tables accordingly
         
-        let mana = parseInt(interaction.options.getString("mana"));
+        let mana;
         let inv = await interaction.client.dbUtils.getUserInventory(interaction.user.id);
 
         let miningPower = 1 + Utils.xpToLevel(inv.xp);
@@ -40,6 +40,15 @@ module.exports = {
         console.log(biome);
 
         let action = interaction.options.getString("action");
+
+        if (!isNaN(interaction.options.getString("mana"))) {
+            mana = parseInt(interaction.options.getString("mana"));
+        } else if (interaction.options.getString("mana") === "all") {
+            mana = parseInt(inv.mana);
+        } else {
+            interaction.reply({ content: "The mana you specified is not a number.", ephemeral: true });
+            return;
+        }
 
         let hasEnoughMana = await interaction.client.dbUtils.hasEnoughMana(interaction.user.id, mana);
 
