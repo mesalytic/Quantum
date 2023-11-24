@@ -1,3 +1,5 @@
+const Utils = require('./Utils');
+
 class DatabaseUtils {
     /**
      * Creates a new DatabaseUtils instance.
@@ -79,6 +81,10 @@ class DatabaseUtils {
             .then(results => results.length > 0 ? results[0] : null);
     }
 
+    async getMaxMana(userId) {
+        let inv = await this.getUserInventory(userId);
+        return 30 + Utils.xpToLevel(inv.xp);
+    }
 }
 
 module.exports = DatabaseUtils;
