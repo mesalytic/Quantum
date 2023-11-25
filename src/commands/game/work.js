@@ -27,7 +27,6 @@ module.exports = {
                 .setRequired(true)
         ),
     async execute(interaction) {
-        // TODO: Implement an "all" option for mana
         // TODO: Add support for different tool types, and adjust the loot tables accordingly
         
         let mana;
