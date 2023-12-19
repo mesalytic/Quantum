@@ -35,33 +35,28 @@ class Utils {
     static getRandomItems(lootTable, mana, miningPower) {
         let selectedItems = {};
 
-        const totalWeight = lootTable.reduce((sum, item) => sum + item.weight, 0);
-
         for (let i = 0; i < mana; i++) {
-            const itemsPerMana = Math.floor(Math.random() * miningPower) + 1;
+            const totalWeight = lootTable.reduce((sum, item) => sum + item.weight, 0);
+            const randomNum = Math.random() * totalWeight;
 
-            for (let k = 0; k < itemsPerMana; k++) {
-                const randomNum = Math.random() * totalWeight;
+            let weightSum = 0;
 
-                let weightSum = 0;
-
-                for (let j = 0; j < lootTable.length; j++) {
-                    weightSum += lootTable[j].weight;
-                    if (randomNum <= weightSum) {
-                        const selectedItem = lootTable[j];
-
-                        if (selectedItems[selectedItem.id]) {
-                            selectedItems[selectedItem.id].amount += itemsPerMana;
-                        } else {
-                            selectedItems[selectedItem.id] = {
-                                name: selectedItem.name,
-                                id: selectedItem.id,
-                                emoji: selectedItem.emoji,
-                                amount: itemsPerMana
-                            };
-                        }
-                        break;
+            for (let j = 0; j < lootTable.length; j++) {
+                weightSum += lootTable[j].weight;
+                if (randomNum <= weightSum) {
+                    const selectedItem = lootTable[j];
+                    const amount = Math.floor(Math.random() * miningPower) + 1;
+                    if (selectedItems[selectedItem.id]) {
+                        selectedItems[selectedItem.id].amount += amount;
+                    } else {
+                        selectedItems[selectedItem.id] = {
+                            name: selectedItem.name,
+                            id: selectedItem.id,
+                            emoji: selectedItem.emoji,
+                            amount: amount
+                        };
                     }
+                    break;
                 }
             }
         }
