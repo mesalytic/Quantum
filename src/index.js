@@ -102,6 +102,14 @@ client.on(Events.InteractionCreate, async interaction => {
 
 client.once('ready', () => {
     console.log('Bot is ready!');
+
+    setInterval(async () => {
+        let rows = await db.query("UPDATE inventory SET mana = mana + 1 WHERE mana < 1000");
+
+        if (rows.affectedRows > 0) {
+            console.log(`Updated ${rows.affectedRows} rows`);
+        }
+    }, 90000)
 });
 
 client.login(config.token);
