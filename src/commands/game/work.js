@@ -4,6 +4,7 @@ const Utils = require('../../Utils/Utils');
 
 const biomes = require("../../../assets/json/biomes.json")
 const lootTables = require("../../../assets/json/lootTable.json");
+const resourcesData = require("../../../assets/json/resources.json");
 
 let choices = [
     { name: "Mining", value: "mining" },
@@ -58,7 +59,10 @@ module.exports = {
 
         let selectedItems = Utils.getRandomItems(lootTables[biome][action], mana, miningPower);
 
-        let selectedItemsStr = Object.values(selectedItems).map(item => `${item.emoji} ${item.name}: ${item.amount}`).join('\n');
+        let selectedItemsStr = Object.values(selectedItems).map(item => {
+            const resource = resourcesData.find(r => r.id === item.id);
+            return `${resource ? resource.emoji : ''} ${item.name}: ${item.amount}`;
+        }).join('\n');
 
         console.log(selectedItemsStr);
 
