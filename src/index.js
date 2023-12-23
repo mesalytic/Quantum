@@ -8,6 +8,7 @@ const { REST, Routes } = require('discord.js');
 const config = require('../config.json');
 const Database = require('./classes/Database');
 const DatabaseUtils = require('./Utils/DatabaseUtils');
+const Utils = require('./Utils/Utils');
 
 const client = new Client({
     intents: [
@@ -103,13 +104,10 @@ client.on(Events.InteractionCreate, async interaction => {
 client.once('ready', () => {
     console.log('Bot is ready!');
 
+    // Update Mana interval
     setInterval(async () => {
-        let rows = await db.query("UPDATE inventory SET mana = mana + 1 WHERE mana < 1000");
-
-        if (rows.affectedRows > 0) {
-            console.log(`Updated ${rows.affectedRows} rows`);
-        }
-    }, 90000)
+        await db.query("UPDATE inventory SET mana = mana + 1 WHERE mana < maxMana");
+    }, 10000)
 });
 
 client.login(config.token);
