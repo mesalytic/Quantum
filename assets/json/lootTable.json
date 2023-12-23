@@ -3,9 +3,16 @@
         "mining": [
             { "name": "Enchanted Crystals", "id": "enchanted_crystals", "rarity": "Common", "weight": 100 },
             { "name": "Mystic Ores", "id": "mystic_ores", "rarity": "Rare", "weight": 40 },
+            { "name": "Luminous Shards", "id": "luminous_shards", "rarity": "Rare", "weight": 35 },
             { "name": "Ethereal Gems", "id": "ethereal_gems", "rarity": "Epic", "weight": 8 },
-            { "name": "Whispering Stones", "id": "whispering_stones", "rarity": "Legendary", "weight": 3 },
-            { "name": "Luminous Shards", "id": "luminous_shards", "rarity": "Rare", "weight": 35 }
+            { "name": "Whispering Stones", "id": "whispering_stones", "rarity": "Legendary", "weight": 3 }
+        ],
+        "chopping": [
+            { "name": "Eldertree Timber", "id": "eldertree_timber", "rarity": "Common", "weight": 100 },
+            { "name": "Moonlit Bark", "id": "moonlit_bark", "rarity": "Rare", "weight": 47 },
+            { "name": "Spectral Wood", "id": "spectral_wood", "rarity": "Epic", "weight": 27 },
+            { "name": "Driftwood Logs", "id": "driftwood_logs", "rarity": "Epic", "weight": 12 },
+            { "name": "Glowleaf Lumber", "id": "glowleaf_lumber", "rarity": "Legendary", "weight": 2 }
         ]
     }
 }

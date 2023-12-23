@@ -33,5 +33,40 @@
         "id": "luminous_shards",
         "rarity": "Rare",
         "type": "Mining"
+    },
+    {
+        "name": "Eldertree Timber",
+        "emoji": "<:Eldertree Timber:emoji_id>",
+        "id": "eldertree_timber",
+        "rarity": "Common",
+        "type": "Chopping"
+    },
+    {
+        "name": "Moonlit Bark",
+        "emoji": "<:Moonlit Bark:emoji_id>",
+        "id": "moonlit_bark",
+        "rarity": "Rare",
+        "type": "Chopping"
+    },
+    {
+        "name": "Spectral Wood",
+        "emoji": "<:Spectral Wood:emoji_id>",
+        "id": "spectral_wood",
+        "rarity": "Epic",
+        "type": "Chopping"
+    },
+    {
+        "name": "Driftwood Logs",
+        "emoji": "<:Driftwood Logs:emoji_id>",
+        "id": "driftwood_logs",
+        "rarity": "Epic",
+        "type": "Chopping"
+    },
+    {
+        "name": "Glowleaf Lumber",
+        "emoji": "<:Glowleaf Lumber:emoji_id>",
+        "id": "glowleaf_lumber",
+        "rarity": "Legendary",
+        "type": "Chopping"
     }
 ]
