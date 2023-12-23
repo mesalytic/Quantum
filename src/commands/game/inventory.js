@@ -42,6 +42,7 @@ module.exports = {
                     delete inv.userID;
                     delete inv.xp;
                     delete inv.mana;
+                    delete inv.maxMana;
                     delete inv.biome;
 
                     let resourcesByType = {};
