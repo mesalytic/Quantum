@@ -89,7 +89,7 @@ module.exports = {
                         .setColor('#0099ff')
                         .addFields(
                             { name: "General", value: `\uD83D\uDCC8 Level: ${Utils.xpToLevel(inv.xp)} (${BigInt(inv.xp)})\n⭐ Mana: ${BigInt(inv.mana)}/${maxMana} [+1/1m30s]\nBiome: ${biomes[inv.biome]}`, inline: false },
-                            { name: "Items", value: "⛏️ N/A", inline: false },
+                            { name: "Items", value: "⛏️ N/A\n🪓 N/A", inline: false },
                     )
                     
                     i.reply({ embeds: [embed], components: [row] });
