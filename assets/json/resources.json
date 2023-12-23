@@ -4,34 +4,34 @@
         "emoji": "<:enchanted_crystals:1177047642858074113>",
         "id": "enchanted_crystals",
         "rarity": "Common",
-        "type": "Chopping"
+        "type": "Mining"
     },
     {
         "name": "Mystic Ores",
         "emoji": "<:mystic_ores:emoji_id>",
         "id": "mystic_ores",
         "rarity": "Rare",
-        "type": "Chopping"
+        "type": "Mining"
     },
     {
         "name": "Ethereal Gems",
         "emoji": "<:ethereal_gems:emoji_id>",
         "id": "ethereal_gems",
         "rarity": "Epic",
-        "type": "Chopping"
+        "type": "Mining"
     },
     {
         "name": "Whispering Stones",
         "emoji": "<:whispering_stones:emoji_id>",
         "id": "whispering_stones",
         "rarity": "Legendary",
-        "type": "Chopping"
+        "type": "Mining"
     },
     {
         "name": "Luminous Shards",
         "emoji": "<:luminous_shards:emoji_id>",
         "id": "luminous_shards",
         "rarity": "Rare",
-        "type": "Chopping"
+        "type": "Mining"
     }
 ]
