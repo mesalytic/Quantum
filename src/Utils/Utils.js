@@ -32,19 +32,20 @@ class Utils {
      * const selectedItems = Utils.getRandomItems(lootTable, mana, miningPower);
      * console.log(selectedItems);
      */
-    static getRandomItems(lootTable, mana, miningPower) {
+    static getRandomItems(lootTable, mana, miningPower, minToolLevel) {
         let selectedItems = {};
 
         for (let i = 0; i < mana; i++) {
-            const totalWeight = lootTable.reduce((sum, item) => sum + item.weight, 0);
+            const filteredLootTable = lootTable.filter(item => item.minToolLevel <= minToolLevel);
+            const totalWeight = filteredLootTable.reduce((sum, item) => sum + item.weight, 0);
             const randomNum = Math.random() * totalWeight;
 
             let weightSum = 0;
 
-            for (let j = 0; j < lootTable.length; j++) {
-                weightSum += lootTable[j].weight;
+            for (let j = 0; j < filteredLootTable.length; j++) {
+                weightSum += filteredLootTable[j].weight;
                 if (randomNum <= weightSum) {
-                    const selectedItem = lootTable[j];
+                    const selectedItem = filteredLootTable[j];
                     const amount = Math.floor(Math.random() * miningPower) + 1;
                     if (selectedItems[selectedItem.id]) {
                         selectedItems[selectedItem.id].amount += amount;

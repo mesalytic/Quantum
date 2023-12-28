@@ -6,6 +6,7 @@ const { SlashCommandBuilder } = require('discord.js');
 const Utils = require('../../Utils/Utils');
 const biomes = require('../../../assets/json/biomes.json');
 const resourcesData = require('../../../assets/json/resources.json');
+const tools = require('../../../assets/json/tools.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -28,7 +29,7 @@ module.exports = {
             .setColor('#0099ff')
             .addFields(
                 { name: "General", value: `\uD83D\uDCC8 Level: ${Utils.xpToLevel(inv.xp)} (${BigInt(inv.xp)} xp)\n⭐ Mana: ${BigInt(inv.mana)}/${inv.maxMana} [+1/1m30s]\nBiome: ${biomes[inv.biome]}`, inline: false },
-                { name: "Items", value: "⛏️ N/A\n🪓 N/A", inline: false },
+                { name: "Items", value: `⛏️ Pickaxe: ${tools.pickaxe[inv.pickaxe].name}\n🪓 Axe: ${tools.axe[inv.axe].name}`, inline: false },
         )
         
         interaction.reply({ embeds: [embed], components: [row] }).then(async (reply) => { 
@@ -87,7 +88,7 @@ module.exports = {
                         .setColor('#0099ff')
                         .addFields(
                             { name: "General", value: `\uD83D\uDCC8 Level: ${Utils.xpToLevel(inv.xp)} (${BigInt(inv.xp)} xp)\n⭐ Mana: ${BigInt(inv.mana)}/${inv.maxMana} [+1/1m30s]\nBiome: ${biomes[inv.biome]}`, inline: false },
-                            { name: "Items", value: "⛏️ N/A\n🪓 N/A", inline: false },
+                            { name: "Items", value: `⛏️ Pickaxe: ${tools.pickaxe[inv.pickaxe].name}\n🪓 Axe: ${tools.axe[inv.axe].name}`, inline: false },
                     )
                     
                     i.reply({ embeds: [embed], components: [row] });

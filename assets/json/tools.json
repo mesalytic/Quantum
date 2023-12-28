@@ -1,0 +1,21 @@
+{
+    "pickaxe": {
+        "0": {
+            "name": "None",
+            "miningPower": 0,
+            "minLevel": 0
+        },
+        "1": {
+            "name": "Pickaxe 1",
+            "miningPower": 0,
+            "minLevel": 1
+        }
+    },
+    "axe": {
+        "0": {
+            "name": "None",
+            "miningPower": 0,
+            "minLevel": 0
+        }
+    }
+}

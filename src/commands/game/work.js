@@ -5,6 +5,7 @@ const Utils = require('../../Utils/Utils');
 const biomes = require("../../../assets/json/biomes.json")
 const lootTables = require("../../../assets/json/lootTable.json");
 const resourcesData = require("../../../assets/json/resources.json");
+const tools = require('../../../assets/json/tools.json');
 
 let choices = [
     { name: "Mining", value: "mining" },
@@ -32,14 +33,14 @@ module.exports = {
         
         let mana;
         let inv = await interaction.client.dbUtils.getUserInventory(interaction.user.id);
-
-        let miningPower = 1 + Utils.xpToLevel(inv.xp);
-
         let biome = await interaction.client.dbUtils.getUserBiome(interaction.user.id)
 
         console.log(biome);
 
         let action = interaction.options.getString("action");
+        let tool = action === "mining" ? "pickaxe" : "axe";
+
+        let miningPower = 1 + Utils.xpToLevel(inv.xp) + tools[tool][inv[tool]].miningPower;
 
         if (!isNaN(interaction.options.getString("mana"))) {
             mana = parseInt(interaction.options.getString("mana"));
@@ -57,7 +58,7 @@ module.exports = {
             return;
         }
 
-        let selectedItems = Utils.getRandomItems(lootTables[biome][action], mana, miningPower);
+        let selectedItems = Utils.getRandomItems(lootTables[biome][action], mana, miningPower, inv[tool]);
 
         let selectedItemsStr = Object.values(selectedItems).map(item => {
             const resource = resourcesData.find(r => r.id === item.id);
