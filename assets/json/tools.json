@@ -1,14 +1,16 @@
 {
     "pickaxe": {
-        "0": {
+        "none": {
             "name": "None",
             "miningPower": 0,
-            "minLevel": 0
+            "minLevel": 0,
+            "toolLevel": 0
         },
-        "1": {
-            "name": "Pickaxe 1",
+        "crystal_pickaxe": {
+            "name": "Crystal Pickaxe",
             "miningPower": 0,
-            "minLevel": 1
+            "minLevel": 1,
+            "toolLevel": 1
         }
     },
     "axe": {

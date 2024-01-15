@@ -29,8 +29,6 @@ module.exports = {
                 .setRequired(true)
         ),
     async execute(interaction) {
-        // TODO: Add support for different tool types, and adjust the loot tables accordingly
-        
         let mana;
         let inv = await interaction.client.dbUtils.getUserInventory(interaction.user.id);
         let biome = await interaction.client.dbUtils.getUserBiome(interaction.user.id)
@@ -58,14 +56,12 @@ module.exports = {
             return;
         }
 
-        let selectedItems = Utils.getRandomItems(lootTables[biome][action], mana, miningPower, inv[tool]);
+        let selectedItems = Utils.getRandomItems(lootTables[biome][action], mana, miningPower, tools[tool][inv[tool]].toolLevel);
 
         let selectedItemsStr = Object.values(selectedItems).map(item => {
             const resource = resourcesData.find(r => r.id === item.id);
             return `${resource ? resource.emoji : ''} ${item.name}: ${item.amount}`;
         }).join('\n');
-
-        console.log(selectedItemsStr);
 
         let xp = Utils.calculateXP(mana);
 
@@ -74,7 +70,7 @@ module.exports = {
             .setColor('#0099ff')
             .addFields(
                 { name: 'Items', value: selectedItemsStr, inline: true },
-                { name: 'Information', value: `Mana: ${mana}\nMining Power: ${miningPower}\nXP Gained: ${xp}\n\nBiome: ${biomes[biome]}\nAction: ${action.charAt(0).toUpperCase() + action.slice(1)}`, inline: true }
+                { name: 'Information', value: `Mana: ${mana}\nMining Power: ${miningPower}\nXP Gained: ${xp}\n\nBiome: ${biomes[biome]}\nAction: ${action.charAt(0).toUpperCase() + action.slice(1)}\nTool: ${tools[tool][inv[tool]].name}`, inline: true }
             )
 
         let query = 'UPDATE inventory SET ';
